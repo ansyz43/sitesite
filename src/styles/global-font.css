@@ -1,0 +1,32 @@
+/* Global font override */
+
+html,
+body,
+*,
+*::before,
+*::after {
+  font-family: Arial, sans-serif;
+}
+
+/* Override specific Tailwind classes */
+.font-sans {
+  font-family: Arial, sans-serif;
+}
+
+.font-serif {
+  font-family: Georgia, serif;
+}
+
+.font-mono {
+  font-family: "Courier New", monospace;
+}
+
+/* Allow Montserrat to override EBENYA when explicitly set */
+.font-montserrat {
+  font-family: Montserrat, Arial, sans-serif !important;
+}
+
+/* Specific override for Montserrat text */
+[style*="font-family: Montserrat"] {
+  font-family: Montserrat, Arial, sans-serif !important;
+}

@@ -26,7 +26,7 @@ const PortfolioSection = ({
   portfolioItems = [
     {
       id: "1",
-      brand: "Luxury Brand",
+      brand: "Люксовый Бренд",
       metric: "CPA -28%",
       thumbnailUrl:
         "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80",
@@ -36,7 +36,7 @@ const PortfolioSection = ({
     },
     {
       id: "2",
-      brand: "Tech Company",
+      brand: "Технологическая Компания",
       metric: "CTR +45%",
       thumbnailUrl:
         "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&q=80",
@@ -46,7 +46,7 @@ const PortfolioSection = ({
     },
     {
       id: "3",
-      brand: "Fashion Label",
+      brand: "Модный Лейбл",
       metric: "ROI +120%",
       thumbnailUrl:
         "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
@@ -56,11 +56,11 @@ const PortfolioSection = ({
     },
   ],
   usps = [
-    { icon: "⚡", title: "Speed" },
-    { icon: "💰", title: "Budget-70%" },
-    { icon: "♾", title: "Visual freedom" },
-    { icon: "📈", title: "Engagement ↑" },
-    { icon: "🧩", title: "Unified style" },
+    { icon: "⚡", title: "Скорость" },
+    { icon: "💰", title: "Бюджет -70%" },
+    { icon: "♾", title: "Визуальная свобода" },
+    { icon: "📈", title: "Вовлечённость ↑" },
+    { icon: "🧩", title: "Единый стиль" },
   ],
 }: PortfolioSectionProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -84,10 +84,12 @@ const PortfolioSection = ({
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Our Portfolio</h2>
-          <p className="text-lg text-gray-300 max-w-2xl">
-            Discover how our AI-generated content has transformed brands and
-            boosted performance metrics.
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Наше Портфолио
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl font-montserrat">
+            Узнайте, как наш контент, созданный с помощью ИИ, преобразил бренды
+            и улучшил показатели эффективности.
           </p>
         </motion.div>
 
@@ -123,8 +125,8 @@ const PortfolioSection = ({
                       <span className="inline-block px-3 py-1 bg-[#E30613] text-white text-sm font-medium rounded-full">
                         {item.metric}
                       </span>
-                      <span className="ml-auto text-sm text-white/70">
-                        Click to view
+                      <span className="ml-auto text-sm text-white/70 font-montserrat">
+                        Нажмите для просмотра
                       </span>
                     </div>
                   </div>
@@ -138,13 +140,13 @@ const PortfolioSection = ({
                     poster={item.thumbnailUrl}
                   >
                     <source src={item.videoUrl} type="video/mp4" />
-                    Your browser does not support the video tag.
+                    Ваш браузер не поддерживает видео тег.
                   </video>
                 </div>
                 <div className="mt-4">
                   <h3 className="text-xl font-bold text-white">{item.brand}</h3>
-                  <p className="text-gray-300 mt-2">
-                    Performance: {item.metric}
+                  <p className="text-gray-300 mt-2 font-montserrat">
+                    Результат: {item.metric}
                   </p>
                 </div>
               </DialogContent>
@@ -160,7 +162,7 @@ const PortfolioSection = ({
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">Why Us</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">Почему Мы</h2>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
