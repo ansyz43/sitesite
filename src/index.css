@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./styles/fonts.css";
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,5 +76,36 @@
     @apply bg-background text-foreground;
     background-color: #111111;
     color: white;
+  }
+}
+
+/* Video background styles */
+.absolute.inset-0.z-0 video {
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: fill;
+}
+
+/* Ensure content is visible over video */
+.relative.z-10 {
+  position: relative;
+  z-index: 10;
+}
+
+/* Text shadow for better readability without background */
+.text-shadow-lg {
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 1),
+    0 0 20px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 0, 0, 0.7),
+    0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Optimize video playback */
+@media (max-width: 768px) {
+  video {
+    object-position: center;
   }
 }
