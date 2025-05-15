@@ -79,15 +79,87 @@
   }
 }
 
-/* Video background styles */
-.absolute.inset-0.z-0 video {
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  object-fit: fill;
+/* Background image styles */
+.bg-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
 }
 
-/* Ensure content is visible over video */
+.bg-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* Background image variations */
+.bg-hero::before {
+  background-image: url("/new.jpg");
+  background-size: cover;
+}
+
+.bg-services::before {
+  background-image: url("/new.jpg");
+  background-size: cover;
+}
+
+.bg-portfolio::before {
+  background-image: url("/new.jpg");
+  background-size: cover;
+}
+
+.bg-why-us::before {
+  background-image: url("/new.jpg");
+  background-size: cover;
+}
+
+.bg-cta::before {
+  background-image: url("/new.jpg");
+  background-size: cover;
+}
+
+/* Dark overlay for better text readability */
+.bg-section.with-overlay::before {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-blend-mode: overlay;
+}
+
+/* Gradient transition between sections */
+.bg-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bg-section:not(:first-child):not(.bg-why-us)::after {
+  top: -50px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+}
+
+/* Why Us section without top gradient */
+.bg-why-us::after {
+  bottom: -50px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.bg-section:not(:last-child)::after {
+  bottom: -50px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+/* Ensure content is visible over background */
 .relative.z-10 {
   position: relative;
   z-index: 10;
@@ -103,9 +175,4 @@
     0 0 50px rgba(0, 0, 0, 0.6);
 }
 
-/* Optimize video playback */
-@media (max-width: 768px) {
-  video {
-    object-position: center;
-  }
-}
+/* Background image is already optimized for all screen sizes */

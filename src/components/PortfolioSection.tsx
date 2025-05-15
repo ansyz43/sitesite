@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Link } from "react-router-dom";
 
 interface PortfolioItem {
   id: string;
@@ -66,16 +67,7 @@ const PortfolioSection = ({
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <section className="py-20 bg-[#111111] text-white relative overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{
-          backgroundImage:
-            "url('/u3178933537_Ultra-minimalist_website_homepage_for_a_creative__39ef95b2-48c9-4d13-a92e-b7e616fbb154_3.png')",
-          backgroundBlendMode: "overlay",
-        }}
-      />
+    <section className="bg-section bg-portfolio py-20 bg-[#111111] text-white relative overflow-hidden">
       <div className="container relative z-10 mx-auto max-w-[1280px] px-4 md:px-[120px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -125,9 +117,21 @@ const PortfolioSection = ({
                       <span className="inline-block px-3 py-1 bg-[#E30613] text-white text-sm font-medium rounded-full">
                         {item.metric}
                       </span>
-                      <span className="ml-auto text-sm text-white/70 font-montserrat">
-                        Нажмите для просмотра
-                      </span>
+                      <div className="ml-auto flex gap-2">
+                        <a
+                          href={`/portfolio/${item.id}/photo`}
+                          className="text-sm text-white/70 font-montserrat hover:text-white transition-colors"
+                        >
+                          Фото
+                        </a>
+                        <span className="text-white/50">|</span>
+                        <a
+                          href={`/portfolio/${item.id}/video`}
+                          className="text-sm text-white/70 font-montserrat hover:text-white transition-colors"
+                        >
+                          Видео
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </motion.div>

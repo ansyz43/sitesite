@@ -1,54 +1,37 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-interface HomeVideoBackgroundProps {
+interface HomeBackgroundProps {
   children: React.ReactNode;
-  videoSrc?: string;
+  imageSrc?: string;
 }
 
 const HomeVideoBackground = ({
   children,
-  videoSrc = "/home.mp4",
-}: HomeVideoBackgroundProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  imageSrc = "/back (3).jpg",
+}: HomeBackgroundProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.75; // Slow down the video slightly
-
-      // Add event listener for when video can play
-      const handleCanPlay = () => {
-        setIsVideoLoaded(true);
-        videoRef.current?.play().catch((error) => {
-          console.error("Video autoplay failed:", error);
-        });
-      };
-
-      videoRef.current.addEventListener("canplay", handleCanPlay);
-
-      // Clean up
-      return () => {
-        videoRef.current?.removeEventListener("canplay", handleCanPlay);
-      };
-    }
-  }, []);
+    // Preload the image
+    const img = new Image();
+    img.src = imageSrc;
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => console.error(`Failed to load image: ${imageSrc}`);
+  }, [imageSrc]);
 
   return (
     <div className="relative min-h-screen bg-[#111111] overflow-hidden">
-      {/* Video background */}
+      {/* Image background */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          className="absolute h-full w-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        >
-          <source src={videoSrc} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div
+          className="absolute h-full w-full bg-cover bg-center bg-no-repeat transition-opacity duration-300"
+          style={{
+            backgroundImage: `url(${imageSrc})`,
+            opacity: imageLoaded ? 1 : 0,
+          }}
+        ></div>
+        {/* Fallback background color while image loads */}
+        <div className="absolute inset-0 bg-[#111111]"></div>
         {/* Overlay to ensure text readability */}
         <div className="absolute inset-0 bg-black opacity-30"></div>
       </div>
